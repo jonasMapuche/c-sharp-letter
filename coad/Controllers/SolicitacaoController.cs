@@ -81,6 +81,64 @@ namespace coad.Controllers
 
         }
 
+        [HttpGet("PaginaSolicitacao")]
+        public IEnumerable<Solicitacao> PaginaSolicitacao(string tamanho, string pagina)
+        {
+            int resto = 0;
+            int inicio, fim = 0;
+            decimal divisaoDecimal = 0;
+            int divisao = 0;
+            int parteInteira = 0;
+            List<Solicitacao> solicitacao = new List<Solicitacao>();
+            //Erro erro = new Erro();
+
+            solicitacao = Deserializar();
+
+            resto = solicitacao.Count() % Int32.Parse(tamanho);
+            divisaoDecimal = solicitacao.Count() / Int32.Parse(tamanho);
+            divisao = Int32.Parse(divisaoDecimal.ToString());
+            parteInteira = Int32.Parse(Math.Truncate(divisaoDecimal).ToString());
+
+            if (Int32.Parse(pagina) >= divisao) {
+                if (resto == 0 && Int32.Parse(pagina) <= parteInteira) {
+                    inicio = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(pagina));
+                    fim = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(pagina)) + Int32.Parse(tamanho) - 1;
+                    return solicitacao.GetRange(inicio, fim).ToArray();
+                } else {
+                    inicio = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(pagina));
+                    fim = solicitacao.Count();
+                    return solicitacao.GetRange(inicio, fim).ToArray();
+                }
+            } else {
+                return null;
+            }
+        }
+
+        [HttpGet("PrioridadeSolicitacao")]
+        public IEnumerable<Solicitacao> PrioridadeSolicitacao(string status, string data)
+        {
+            Int64 dataNumero = Int64.Parse(data);
+            string dataConvertida = data.Substring(7, 2) + "/" + data.Substring(5, 2) + "/" + data.Substring(1, 4);
+            DateTime dataInicio = DateTime.Now;
+            DateTime dataFim = DateTime.Now;
+            List <Solicitacao> solicitacao = new List<Solicitacao>();
+            dataNumero = Int64.Parse(data);
+            solicitacao = Deserializar();
+            dataInicio = Convert.ToDateTime(dataConvertida).AddDays(-2);
+            dataFim = Convert.ToDateTime(dataConvertida).AddDays(-1);
+
+            if (status == "Baixa") {
+                return solicitacao.FindAll(index => Int64.Parse(index.Data) == dataNumero);
+            } else {
+                if (status == "Media") {
+                    return solicitacao.FindAll(index => (Convert.ToDateTime(index.Data.Substring(7, 2) + "/" + index.Data.Substring(5, 2) + "/" + index.Data.Substring(1, 4)) >= dataInicio) && (Convert.ToDateTime(index.Data.Substring(7, 2) + "/" + index.Data.Substring(5, 2) + "/" + index.Data.Substring(1, 4)) <= dataFim));
+                } else
+                {
+                    return solicitacao.FindAll(index => (Convert.ToDateTime(index.Data.Substring(7, 2) + "/" + index.Data.Substring(5, 2) + "/" + index.Data.Substring(1, 4)) < dataInicio));
+                }
+            }
+        }
+
         [HttpPost("GravarSolicitacao")]
         public String PostGravarSolicitacao([FromBody]Solicitacao objeto)
         {
