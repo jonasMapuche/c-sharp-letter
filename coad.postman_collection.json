@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "e4e52f08-c985-4ae9-b164-2f8702a58274",
+		"name": "coad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7120479"
+	},
+	"item": [
+		{
+			"name": "lista solicitacao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/ListaSolicitacao",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"ListaSolicitacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Id solicitacao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/IdSolicitacao?id=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"IdSolicitacao"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selecionar email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/EmailSolicitacao?email=gottfriedgalois@gmail.com",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"EmailSolicitacao"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "gottfriedgalois@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selecionar titulo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/TituloSolicitacao?titulo=Ola",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"TituloSolicitacao"
+					],
+					"query": [
+						{
+							"key": "titulo",
+							"value": "Ola"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selecionar nome",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/NomeSolicitacao?nome=Jonas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"NomeSolicitacao"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Jonas"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagina solicitacao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/PaginaSolicitacao?pagina=1&tamanha=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"PaginaSolicitacao"
+					],
+					"query": [
+						{
+							"key": "pagina",
+							"value": "1"
+						},
+						{
+							"key": "tamanha",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gravar solicitacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 32,\r\n        \"titulo\": \"Ola\",\r\n        \"tipo\": \"Contabil\",\r\n        \"descricao\": \"Contabil\",\r\n        \"data\": \"20220101\",\r\n        \"nome\": \"Alexia\",\r\n        \"telefone\": \"5531995844216\",\r\n        \"email\": \"gottfriedgalois@gmail.com\",\r\n        \"status\": \"Atendidda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/GravarSolicitacao",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"GravarSolicitacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete solicitacao",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/DeleteSolicitacao?id=33",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"DeleteSolicitacao"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "33"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
