@@ -84,32 +84,26 @@ namespace coad.Controllers
         [HttpGet("PaginaSolicitacao")]
         public IEnumerable<Solicitacao> PaginaSolicitacao(string tamanho, string pagina)
         {
-            int resto = 0;
-            int inicio, fim = 0;
-            decimal divisaoDecimal = 0;
-            int divisao = 0;
-            int parteInteira = 0;
+            int inicio = 0;
             List<Solicitacao> solicitacao = new List<Solicitacao>();
-
             solicitacao = Deserializar();
 
-            resto = solicitacao.Count() % Int32.Parse(tamanho);
-            divisaoDecimal = solicitacao.Count() / Int32.Parse(tamanho);
-            divisao = Int32.Parse(divisaoDecimal.ToString());
-            parteInteira = Int32.Parse(Math.Truncate(divisaoDecimal).ToString());
+            int resto = solicitacao.Count() % Int32.Parse(tamanho);
+            decimal divisaoDecimal = solicitacao.Count() / Int32.Parse(tamanho);
+            int divisao = Int32.Parse(divisaoDecimal.ToString());
+            int parteInteira = Int32.Parse(Math.Truncate(divisaoDecimal).ToString());
 
-            if (Int32.Parse(pagina) >= divisao) {
-                if (resto == 0 && Int32.Parse(pagina) <= parteInteira) {
-                    inicio = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(pagina));
-                    fim = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(pagina)) + Int32.Parse(tamanho) - 1;
-                    return solicitacao.GetRange(inicio, fim).ToArray();
-                } else {
-                    inicio = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(pagina));
-                    fim = solicitacao.Count();
-                    return solicitacao.GetRange(inicio, fim).ToArray();
-                }
+            if (Int32.Parse(pagina) <= divisao) {
+                    inicio = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(tamanho));
+                    return solicitacao.GetRange(inicio, Int32.Parse(tamanho)).ToArray();
             } else {
-                return null;
+                if (resto > 0 && Int32.Parse(pagina) == (divisao + 1)) {
+                    inicio = ((Int32.Parse(tamanho) * Int32.Parse(pagina)) - Int32.Parse(tamanho));
+                    return solicitacao.GetRange(inicio, resto).ToArray();
+                }
+                else {
+                    return null;
+                }
             }
         }
 

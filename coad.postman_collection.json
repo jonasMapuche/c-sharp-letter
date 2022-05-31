@@ -181,7 +181,37 @@
 			"response": []
 		},
 		{
-			"name": "pagina solicitacao",
+			"name": "selecionar prioridade baixa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/PrioridadeSolicitacao?status=Baixa&data=20220531",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"PrioridadeSolicitacao"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Baixa"
+						},
+						{
+							"key": "data",
+							"value": "20220531"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selecionar prioridade media",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -198,7 +228,91 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:44349/Solicitacao/PaginaSolicitacao?pagina=1&tamanha=2",
+					"raw": "https://localhost:44349/Solicitacao/PrioridadeSolicitacao?status=Media&data=20220531",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"PrioridadeSolicitacao"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Media"
+						},
+						{
+							"key": "data",
+							"value": "20220531"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selecionar prioridade alta",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/PrioridadeSolicitacao?status=Alta&data=20220531",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44349",
+					"path": [
+						"Solicitacao",
+						"PrioridadeSolicitacao"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Alta"
+						},
+						{
+							"key": "data",
+							"value": "20220531"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selecionar pagina",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44349/Solicitacao/PaginaSolicitacao?tamanho=2&pagina=5",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -210,12 +324,12 @@
 					],
 					"query": [
 						{
-							"key": "pagina",
-							"value": "1"
+							"key": "tamanho",
+							"value": "2"
 						},
 						{
-							"key": "tamanha",
-							"value": "2"
+							"key": "pagina",
+							"value": "5"
 						}
 					]
 				}
@@ -229,7 +343,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"id\": 32,\r\n        \"titulo\": \"Ola\",\r\n        \"tipo\": \"Contabil\",\r\n        \"descricao\": \"Contabil\",\r\n        \"data\": \"20220101\",\r\n        \"nome\": \"Alexia\",\r\n        \"telefone\": \"5531995844216\",\r\n        \"email\": \"gottfriedgalois@gmail.com\",\r\n        \"status\": \"Atendidda\"\r\n}",
+					"raw": "{\r\n        \"id\": 56,\r\n        \"titulo\": \"Medio\",\r\n        \"tipo\": \"Outros\",\r\n        \"descricao\": \"Outros\",\r\n        \"data\": \"20220529\",\r\n        \"nome\": \"Jonas\",\r\n        \"telefone\": \"5531995844216\",\r\n        \"email\": \"cacardoso@yahoo.com\",\r\n        \"status\": \"Atendida\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
