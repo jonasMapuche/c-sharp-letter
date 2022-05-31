@@ -90,7 +90,6 @@ namespace coad.Controllers
             int divisao = 0;
             int parteInteira = 0;
             List<Solicitacao> solicitacao = new List<Solicitacao>();
-            //Erro erro = new Erro();
 
             solicitacao = Deserializar();
 
@@ -118,11 +117,10 @@ namespace coad.Controllers
         public IEnumerable<Solicitacao> PrioridadeSolicitacao(string status, string data)
         {
             Int64 dataNumero = Int64.Parse(data);
-            string dataConvertida = data.Substring(7, 2) + "/" + data.Substring(5, 2) + "/" + data.Substring(1, 4);
+            string dataConvertida = data.Substring(6, 2) + "/" + data.Substring(4, 2) + "/" + data.Substring(0, 4);
             DateTime dataInicio = DateTime.Now;
             DateTime dataFim = DateTime.Now;
             List <Solicitacao> solicitacao = new List<Solicitacao>();
-            dataNumero = Int64.Parse(data);
             solicitacao = Deserializar();
             dataInicio = Convert.ToDateTime(dataConvertida).AddDays(-2);
             dataFim = Convert.ToDateTime(dataConvertida).AddDays(-1);
@@ -131,10 +129,10 @@ namespace coad.Controllers
                 return solicitacao.FindAll(index => Int64.Parse(index.Data) == dataNumero);
             } else {
                 if (status == "Media") {
-                    return solicitacao.FindAll(index => (Convert.ToDateTime(index.Data.Substring(7, 2) + "/" + index.Data.Substring(5, 2) + "/" + index.Data.Substring(1, 4)) >= dataInicio) && (Convert.ToDateTime(index.Data.Substring(7, 2) + "/" + index.Data.Substring(5, 2) + "/" + index.Data.Substring(1, 4)) <= dataFim));
+                    return solicitacao.FindAll(index => (Convert.ToDateTime(index.Data.Substring(6, 2) + "/" + index.Data.Substring(4, 2) + "/" + index.Data.Substring(0, 4)) >= dataInicio) && (Convert.ToDateTime(index.Data.Substring(6, 2) + "/" + index.Data.Substring(4, 2) + "/" + index.Data.Substring(0, 4)) <= dataFim));
                 } else
                 {
-                    return solicitacao.FindAll(index => (Convert.ToDateTime(index.Data.Substring(7, 2) + "/" + index.Data.Substring(5, 2) + "/" + index.Data.Substring(1, 4)) < dataInicio));
+                    return solicitacao.FindAll(index => (Convert.ToDateTime(index.Data.Substring(6, 2) + "/" + index.Data.Substring(4, 2) + "/" + index.Data.Substring(0, 4)) < dataInicio));
                 }
             }
         }
@@ -160,8 +158,6 @@ namespace coad.Controllers
             List<Solicitacao> solicitacao = new List<Solicitacao>();
 
             solicitacao = Deserializar();
-
-            //Solicitacao objeto = new Solicitacao();
 
             solicitacao.Remove(solicitacao.FirstOrDefault(index => index.Id == id));
 
